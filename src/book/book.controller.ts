@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { BookService } from './book.service';
 import { Book } from './dto/book.dto';
 import { v4 as uuid } from 'uuid';
@@ -25,7 +25,7 @@ export class BookController {
     }
 
     @Put('/upadte/:id')
-    update(@Param('id') id, @Body() book: Book): string {
+    update(@Param('id') id: string, @Body() book: Book): string {
         return this.bookService.updateBook(id, book);
     }
 
